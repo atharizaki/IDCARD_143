@@ -22,9 +22,9 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class IdController {
     @RequestMapping("/ProjectCard")
-    public String getData(@RequestParam("Name") String Nama,
-                          @RequestParam("Tanggal")@DateTimeFormat(pattern ="yyyy-dd-MMMM") Date date,
-                          @RequestParam("Gambar") MultipartFile file,
+    public String getData(@RequestParam("name") String nama,
+                          @RequestParam("tanggal")@DateTimeFormat(pattern ="yyyy-MM-dd") Date date,
+                          @RequestParam("gambar") MultipartFile file,
                           Model model) throws IOException{
         
         SimpleDateFormat idc = new SimpleDateFormat("EEEE, dd MMMM yyyy");
@@ -33,7 +33,7 @@ public class IdController {
         String blob = Base64.encodeBase64String(file.getBytes());
         String gambar = "data:image/jpeg;base64,".concat(blob);
         
-        model.addAttribute("Nm", Nama);
+        model.addAttribute("nm", nama);
         model.addAttribute("tgl", tanggal);
         model.addAttribute("gmbr", gambar);
                 
